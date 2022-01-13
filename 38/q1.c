@@ -1,35 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
 int main()
 {
-	int n;
+	int num;
+	scanf("%d", &num);
 
-	scanf("%d", &n);
+	int **m = malloc(sizeof(int *) * num);
 
-	int **m = malloc(sizeof(int) * n);
-
-	for (int i = 0; i<n; i++)
+	for (int i = 0; i < num; i++)
 	{
-		memset(m[i], 0, sizeof(int) * n);
+		m[i] = malloc(sizeof(int) * num);
 	}
 
-	for (int i = 0; i<n; i++)
+	for (int i = 0; i < num; i++)
 	{
-		m[i][i] = 1;
-	}
-	
-	for (int i = 0; i < n; i++)
-	{
-		for (int j =0; j < n; j++)
+		for (int j = 0; j < num; j++)
 		{
+			m[i][j] = 0;
+			if (i == j)
+			{
+				m[i][j] = 1;
+			}
+
 			printf("%d ", m[i][j]);
 		}
 		printf("\n");
 	}
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < num; i++)
+	{
 		free(m[i]);
+	}
 
 	free(m);
 
