@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main()
 {
-	char s1[30] = "The little prince";
+	char * s1 = malloc(sizeof(char) * 30);
+
+	strcpy(s1, "The Little Prince");
 
 	char * ptr = strtok(s1, " ");
 
@@ -14,4 +17,5 @@ int main()
 	}
 
 	return 0;
+
 }
